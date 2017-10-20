@@ -4,10 +4,9 @@
     {
         public static void FlippClockwise(ref int[,] matrix)
         {
-            int xLength = matrix.GetLength(0);
-            int yLength = matrix.GetLength(1);
+            int length = matrix.GetLength(0);
 
-            for (int i = 0; i < xLength; i++)
+            for (int i = 0; i < length; i++)
             {
                 for (int j = 0; j < i; j++)
                 {
