@@ -3,7 +3,7 @@
 using AGrynCo.Lib.Console;
 using AGrynCo.Lib.Console.CommandLineParameters;
 
-using MatrixFlipper.MatrixUtils;
+using Autofac;
 
 namespace MatrixFlipper.Console
 {
@@ -26,9 +26,13 @@ namespace MatrixFlipper.Console
             CommandLineProcessingResult processingResult = CommandLineParametersPrcessor.Process(args, _COMMAND_LINE_PARAMETERS);
             if (processingResult.IsValid)
             {
-                var matrixFlipperController = new MatrixFlipperController(new MatrixUtils.MatrixFlipper(),
-                    new MatrixReaderFromCsv(),
-                    new MatrixWriterToCsv());
+                IContainer container = DependencyConfigurator.Configure();
+
+                var matrixFlipperController = container.Resolve<MatrixFlipperController>();
+
+                //var matrixFlipperController = new MatrixFlipperController(new MatrixUtils.MatrixFlipper(),
+                //    new MatrixReaderFromCsv(),
+                //    new MatrixWriterToCsv());
 
                 matrixFlipperController.FlipClockwise(new StreamReader(_INPUT.Value), new StreamWriter(_OUTPUT.Value));
 

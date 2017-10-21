@@ -33,11 +33,18 @@
     <Reference Include="AGrynCo.Lib, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\AGrynco.Lib.dll.0.0.32\lib\net46\AGrynCo.Lib.dll</HintPath>
     </Reference>
+    <Reference Include="Autofac, Version=4.6.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.6.2\lib\net45\Autofac.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework, Version=3.8.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.3.8.1\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -57,6 +64,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MatrixFlipper.Console\MatrixFlipper.Console.csproj">
+      <Project>{B8CD9073-2612-460A-8554-8EEA7ECC345C}</Project>
+      <Name>MatrixFlipper.Console</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MatrixFlipper.MatrixUtils\MatrixFlipper.MatrixUtils.csproj">
       <Project>{AE006EE8-8C00-4A58-AA6A-A8373AF606E8}</Project>
       <Name>MatrixFlipper.MatrixUtils</Name>
