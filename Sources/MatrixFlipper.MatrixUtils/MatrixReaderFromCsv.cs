@@ -3,13 +3,11 @@ using System.IO;
 
 namespace MatrixFlipper.MatrixUtils
 {
-    public class MatrixReaderFromCsv : MatrixReaderFromFile
+    public class MatrixReaderFromCsv : IMatrixReader
     {
-        public MatrixReaderFromCsv(TextReader textReader) : base(textReader) { }
-
-        public override int[,] Read()
+        public int[,] Read(TextReader textReader)
         {
-            string wholeFile = TextReader.ReadToEnd();
+            string wholeFile = textReader.ReadToEnd();
 
             wholeFile = wholeFile.Replace('\n', '\r');
             if (string.IsNullOrEmpty(wholeFile))

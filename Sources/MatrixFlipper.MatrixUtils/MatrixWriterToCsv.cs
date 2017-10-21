@@ -3,11 +3,9 @@ using System.Text;
 
 namespace MatrixFlipper.MatrixUtils
 {
-    public class MatrixWriterToCsv : MatrixWriterToFile
+    public class MatrixWriterToCsv : IMatrixWriter
     {
-        public MatrixWriterToCsv(TextWriter textWriter) : base(textWriter) { }
-
-        public override void Write(int[,] matrix)
+        public void Write(int[,] matrix, TextWriter textWriter)
         {
             int length = matrix.GetLength(0);
             var rowBuilder = new StringBuilder();
@@ -22,11 +20,11 @@ namespace MatrixFlipper.MatrixUtils
                     rowBuilder.Append(matrix[i, j].ToString());
                 }
 
-                TextWriter.WriteLine(rowBuilder.ToString());
+                textWriter.WriteLine(rowBuilder.ToString());
                 rowBuilder.Clear();
             }
 
-            TextWriter.Flush();
+            textWriter.Flush();
         }
     }
 }

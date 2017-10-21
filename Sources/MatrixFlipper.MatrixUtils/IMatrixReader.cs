@@ -1,7 +1,9 @@
-﻿namespace MatrixFlipper.MatrixUtils
+﻿using System.IO;
+
+namespace MatrixFlipper.MatrixUtils
 {
     public interface IMatrixReader
     {
-        int[,] Read();
+        int[,] Read(TextReader textReader);
     }
 }

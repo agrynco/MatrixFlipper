@@ -27,10 +27,10 @@ namespace MatrixFlipper.Console
             if (processingResult.IsValid)
             {
                 var matrixFlipperController = new MatrixFlipperController(new MatrixUtils.MatrixFlipper(),
-                    new MatrixReaderFromCsv(new StreamReader(_INPUT.Value)),
-                    new MatrixWriterToCsv(new StreamWriter(_OUTPUT.Value)));
+                    new MatrixReaderFromCsv(),
+                    new MatrixWriterToCsv());
 
-                matrixFlipperController.FlipClockwise();
+                matrixFlipperController.FlipClockwise(new StreamReader(_INPUT.Value), new StreamWriter(_OUTPUT.Value));
 
                 return _NO_ERROR;
             }

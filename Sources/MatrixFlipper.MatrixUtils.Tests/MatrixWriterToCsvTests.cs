@@ -12,7 +12,7 @@ namespace MatrixFlipper.MatrixUtils.Tests
         {
             //Arrange
             var stream = new MemoryStream();
-            var target = new MatrixWriterToCsv(new StreamWriter(stream));
+            var target = new MatrixWriterToCsv();
 
             //Act
             target.Write(new[,]
@@ -20,7 +20,7 @@ namespace MatrixFlipper.MatrixUtils.Tests
                     { 1, 2, 3 },
                     { 4, 5, 6 },
                     { 7, 8, 9 }
-                }
+                }, new StreamWriter(stream)
             );
 
             stream.Position = 0;

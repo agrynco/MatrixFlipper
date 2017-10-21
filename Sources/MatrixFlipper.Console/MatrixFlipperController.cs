@@ -1,4 +1,6 @@
-﻿using MatrixFlipper.MatrixUtils;
+﻿using System.IO;
+
+using MatrixFlipper.MatrixUtils;
 
 namespace MatrixFlipper.Console
 {
@@ -16,11 +18,11 @@ namespace MatrixFlipper.Console
             _matrixWriter = matrixWriter;
         }
 
-        public void FlipClockwise()
+        public void FlipClockwise(TextReader textReader, TextWriter textWriter)
         {
-            int[,] matrix = _matrixReader.Read();
+            int[,] matrix = _matrixReader.Read(textReader);
             _matrixFlipper.FlipClockwise(ref matrix);
-            _matrixWriter.Write(matrix);
+            _matrixWriter.Write(matrix, textWriter);
         }
     }
 }
