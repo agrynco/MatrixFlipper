@@ -3,10 +3,10 @@
 namespace MatrixFlipper.MatrixUtils.Tests
 {
     [TestFixture]
-    public class MatrixFilipperTests
+    public class MatrixFliperTests
     {
         [Test]
-        public void FlippClockwise()
+        public void FlipClockwise()
         {
             //Arrange
             int[,] matrix =
@@ -24,7 +24,7 @@ namespace MatrixFlipper.MatrixUtils.Tests
             };
 
             //Act
-            MatrixFilipper.FlippClockwise(ref matrix);
+            matrix = MatrixFliper.FlipClockwise(matrix);
 
             //Asserts
             for (int i = 0; i < matrix.GetLength(0); i++)

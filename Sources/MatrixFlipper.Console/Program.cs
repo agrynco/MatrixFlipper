@@ -13,7 +13,7 @@ namespace MatrixFlipper.Console
                 { 7, 8, 9 }
             };
 
-            MatrixFilipper.FlippClockwise(ref matrix);
+            matrix = MatrixFliper.FlipClockwise(matrix);
 
             for (int i = 0; i < matrix.GetLength(0); i++)
             {

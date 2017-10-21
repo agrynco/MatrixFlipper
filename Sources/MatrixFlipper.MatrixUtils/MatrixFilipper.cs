@@ -1,21 +1,33 @@
 ﻿namespace MatrixFlipper.MatrixUtils
 {
-    public static class MatrixFilipper
+    public static class MatrixFliper
     {
-        public static void FlippClockwise(ref int[,] matrix)
+        public static int[,] FlipClockwise(int[,] matrix)
         {
             int length = matrix.GetLength(0);
 
+            for (int y = 0; y < length; y++)
+            {
+                for (int x = y + 1; x < length; x++)
+                {
+                    int tmp = matrix[y, x];
+                    matrix[y, x] = matrix[x, y];
+                    matrix[x, y] = tmp;
+                }
+            }
+
             for (int i = 0; i < length; i++)
             {
-                for (int j = 0; j < i; j++)
+                for (int j = 0; j < (length / 2); j++)
                 {
                     int tmp = matrix[i, j];
 
-                    matrix[i, j] = matrix[j, i];
-                    matrix[j, i] = tmp;
+                    matrix[i, j] = matrix[i, length - j - 1];
+                    matrix[i, length - j - 1] = tmp;
                 }
             }
+
+            return matrix;
         }
     }
 }
