@@ -1,5 +1,9 @@
-﻿using AGrynCo.Lib.Console;
+﻿using System.IO;
+
+using AGrynCo.Lib.Console;
 using AGrynCo.Lib.Console.CommandLineParameters;
+
+using MatrixFlipper.MatrixUtils;
 
 namespace MatrixFlipper.Console
 {
@@ -7,8 +11,8 @@ namespace MatrixFlipper.Console
     {
         private const int _NO_ERROR = 0;
         private const int _COMMAND_LINE_PARAMETERS_ARE_NOT_VALID = 1;
-        private static readonly ICommandLineParameter _INPUT = new StringCommandLineParameter("input", @"C:\Temp\input.csv");
-        private static readonly ICommandLineParameter _OUTPUT = new StringCommandLineParameter("output", @"C:\Temp\output.csv");
+        private static readonly ICommandLineParameter<string> _INPUT = new StringCommandLineParameter("input", @"C:\Temp\input.csv");
+        private static readonly ICommandLineParameter<string> _OUTPUT = new StringCommandLineParameter("output", @"C:\Temp\output.csv");
 
         private static readonly ICommandLineParameter[] _COMMAND_LINE_PARAMETERS = { _INPUT, _OUTPUT };
 
@@ -22,6 +26,12 @@ namespace MatrixFlipper.Console
             CommandLineProcessingResult processingResult = CommandLineParametersPrcessor.Process(args, _COMMAND_LINE_PARAMETERS);
             if (processingResult.IsValid)
             {
+                var matrixFlipperController = new MatrixFlipperController(new MatrixUtils.MatrixFlipper(),
+                    new MatrixReaderFromCsv(new StreamReader(_INPUT.Value)),
+                    new MatrixWriterToCsv(new StreamWriter(_OUTPUT.Value)));
+
+                matrixFlipperController.FlipClockwise();
+
                 return _NO_ERROR;
             }
 
