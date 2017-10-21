@@ -40,7 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IMatrixReader.cs" />
+    <Compile Include="IMatrixWriter.cs" />
     <Compile Include="MatrixFilipper.cs" />
+    <Compile Include="MatrixReaderFromCsv.cs" />
+    <Compile Include="MatrixReaderFromFile.cs" />
+    <Compile Include="MatrixWriterToCsv.cs" />
+    <Compile Include="MatrixWriterToFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

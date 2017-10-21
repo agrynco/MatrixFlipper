@@ -33,7 +33,7 @@ namespace MatrixFlipper.MatrixUtils.Tests
             };
 
             //Act
-            matrix = MatrixFliper.FlipClockwise(matrix);
+            new MatrixFlipper().FlipClockwise(ref matrix);
 
             //Asserts
             AssertMatrix(matrix, expected);
@@ -58,7 +58,7 @@ namespace MatrixFlipper.MatrixUtils.Tests
             };
 
             //Act
-            matrix = MatrixFliper.FlipClockwise(matrix);
+            new MatrixFlipper().FlipClockwise(ref matrix);
 
             //Asserts
             AssertMatrix(matrix, expected);
@@ -85,7 +85,7 @@ namespace MatrixFlipper.MatrixUtils.Tests
             };
 
             //Act
-            matrix = MatrixFliper.FlipClockwise(matrix);
+            new MatrixFlipper().FlipClockwise(ref matrix);
 
             //Asserts
             AssertMatrix(matrix, expected);
