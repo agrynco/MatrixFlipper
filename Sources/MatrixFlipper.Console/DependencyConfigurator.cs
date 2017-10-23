@@ -12,7 +12,7 @@ namespace MatrixFlipper.Console
 
             containerBuilder.RegisterType<MatrixReaderFromCsv>().As<IMatrixReader>();
             containerBuilder.RegisterType<MatrixWriterToCsv>().As<IMatrixWriter>();
-            containerBuilder.RegisterType<MatrixUtils.MatrixFlipper>();
+            containerBuilder.RegisterType<MatrixUtils.MatrixFlipper>().As<MatrixFlipperBase>();
             containerBuilder.RegisterType<MatrixFlipperController>();
 
             return containerBuilder.Build();

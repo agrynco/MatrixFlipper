@@ -1,8 +1,8 @@
 ﻿namespace MatrixFlipper.MatrixUtils
 {
-    public class MatrixFlipper
+    public class MatrixFlipper : MatrixFlipperBase
     {
-        public void FlipClockwise(ref int[,] matrix)
+        protected override void DoFlipClockwise(ref int[,] matrix)
         {
             int length = matrix.GetLength(0);
 
@@ -21,7 +21,6 @@
                 for (int j = 0; j < (length / 2); j++)
                 {
                     int tmp = matrix[i, j];
-
                     matrix[i, j] = matrix[i, length - j - 1];
                     matrix[i, length - j - 1] = tmp;
                 }

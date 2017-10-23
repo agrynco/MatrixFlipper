@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 
 using AGrynCo.Lib.Console;
 using AGrynCo.Lib.Console.CommandLineParameters;
@@ -11,6 +12,8 @@ namespace MatrixFlipper.Console
     {
         private const int _NO_ERROR = 0;
         private const int _COMMAND_LINE_PARAMETERS_ARE_NOT_VALID = 1;
+        private const int _UNKNOWN_ERROR = 2;
+
         private static readonly ICommandLineParameter<string> _INPUT = new StringCommandLineParameter("input", @"C:\Temp\input.csv");
         private static readonly ICommandLineParameter<string> _OUTPUT = new StringCommandLineParameter("output", @"C:\Temp\output.csv");
 
@@ -26,17 +29,21 @@ namespace MatrixFlipper.Console
             CommandLineProcessingResult processingResult = CommandLineParametersPrcessor.Process(args, _COMMAND_LINE_PARAMETERS);
             if (processingResult.IsValid)
             {
-                IContainer container = DependencyConfigurator.Configure();
+                try
+                {
+                    IContainer container = DependencyConfigurator.Configure();
 
-                var matrixFlipperController = container.Resolve<MatrixFlipperController>();
+                    var matrixFlipperController = container.Resolve<MatrixFlipperController>();
 
-                //var matrixFlipperController = new MatrixFlipperController(new MatrixUtils.MatrixFlipper(),
-                //    new MatrixReaderFromCsv(),
-                //    new MatrixWriterToCsv());
+                    matrixFlipperController.FlipClockwise(new StreamReader(_INPUT.Value), new StreamWriter(_OUTPUT.Value));
 
-                matrixFlipperController.FlipClockwise(new StreamReader(_INPUT.Value), new StreamWriter(_OUTPUT.Value));
-
-                return _NO_ERROR;
+                    return _NO_ERROR;
+                }
+                catch (Exception e)
+                {
+                    ConsoleExtensions.WriteError(e.Message);
+                    return _UNKNOWN_ERROR;
+                }
             }
 
             ConsoleExtensions.WriteError("Please specify command line parameters");

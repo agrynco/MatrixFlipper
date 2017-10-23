@@ -6,11 +6,11 @@ namespace MatrixFlipper.Console
 {
     public class MatrixFlipperController
     {
-        private readonly MatrixUtils.MatrixFlipper _matrixFlipper;
+        private readonly MatrixFlipperBase _matrixFlipper;
         private readonly IMatrixReader _matrixReader;
         private readonly IMatrixWriter _matrixWriter;
 
-        public MatrixFlipperController(MatrixUtils.MatrixFlipper matrixFlipper, IMatrixReader matrixReader,
+        public MatrixFlipperController(MatrixFlipperBase matrixFlipper, IMatrixReader matrixReader,
             IMatrixWriter matrixWriter)
         {
             _matrixFlipper = matrixFlipper;

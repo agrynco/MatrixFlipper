@@ -10,6 +10,23 @@ namespace MatrixFlipper.MatrixUtils.Tests
     public class MatrixReaderFromCsvTests
     {
         [Test]
+        public void Flip_ShouldRise_TheMatrixIsNotSquareException()
+        {
+            //Arrange
+            int[,] matrix =
+            {
+                { 1, 2, 3, 4 },
+                { 5, 6, 7, 8 },
+                { 9, 10, 11, 12 }
+            };
+
+            var target = new MatrixFlipper();
+
+            //Act
+            Assert.Throws<TheMatrixIsNotSquareException>(() => target.FlipClockwise(ref matrix));
+        }
+
+        [Test]
         public void ReadFromEmptyFile()
         {
             //Arrange
